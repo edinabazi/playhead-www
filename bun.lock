@@ -1,5 +1,6 @@
 {
   "lockfileVersion": 1,
+  "configVersion": 0,
   "workspaces": {
     "": {
       "name": "playhead-www",
@@ -18,6 +19,9 @@
         "wrangler": "^4.90.0",
       },
     },
+  },
+  "overrides": {
+    "vite": "^7",
   },
   "packages": {
     "@astrojs/cloudflare": ["@astrojs/cloudflare@13.5.0", "", { "dependencies": { "@astrojs/internal-helpers": "0.9.0", "@astrojs/underscore-redirects": "1.0.3", "@cloudflare/vite-plugin": "^1.32.3", "piccolore": "^0.1.3", "tinyglobby": "^0.2.15", "vite": "^7.3.2" }, "peerDependencies": { "astro": "^6.3.0", "wrangler": "^4.83.0" } }, "sha512-kP3/SwPzZi7tq+fZG6H9GpaYQF3jw9L6vg92QL6q7FLI7t0rGiuG6Q0AckeJYjBUsO4Y+2w7aI7m+Q2r/WpssQ=="],
