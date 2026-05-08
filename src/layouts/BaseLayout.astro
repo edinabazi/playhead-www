@@ -1,0 +1,50 @@
+---
+import { faqJsonLd, pageSeo } from "../lib/seo";
+import "../styles/global.css";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="/assets/playhead-icon.png" />
+    <link rel="apple-touch-icon" href="/assets/playhead-icon.png" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={pageSeo.description} />
+    <link rel="canonical" href={pageSeo.canonicalUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={pageSeo.canonicalUrl} />
+    <meta property="og:title" content={pageSeo.openGraph.title} />
+    <meta property="og:description" content={pageSeo.openGraph.description} />
+    <meta property="og:image" content={pageSeo.openGraph.image} />
+    <meta
+      property="og:image:width"
+      content={String(pageSeo.openGraph.imageWidth)}
+    />
+    <meta
+      property="og:image:height"
+      content={String(pageSeo.openGraph.imageHeight)}
+    />
+    <meta property="og:image:alt" content={pageSeo.openGraph.imageAlt} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageSeo.twitter.title} />
+    <meta name="twitter:description" content={pageSeo.twitter.description} />
+    <meta name="twitter:image" content={pageSeo.twitter.image} />
+    <title>{pageSeo.title}</title>
+    <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd())} />
+    <noscript>
+      <style>
+        .motion-preload {
+          filter: none !important;
+          opacity: 1 !important;
+          transform: none !important;
+        }
+      </style>
+    </noscript>
+  </head>
+  <body
+    class="bg-[var(--website-ui-background)] text-[var(--website-text-primary)] antialiased"
+  >
+    <slot />
+  </body>
+</html>

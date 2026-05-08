@@ -1,1 +1,24 @@
 @import "tailwindcss";
+
+:root {
+  --website-ui-background: #ffffdb;
+  --website-ui-primary: #22221d;
+  --website-text-primary: #2d2d20;
+  --website-text-muted: #4b4b3d;
+  --website-text-primary-on-dark: #ffffea;
+}
+
+html {
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Inter",
+    "Segoe UI",
+    sans-serif;
+  background: var(--website-ui-background);
+}
+
+body {
+  margin: 0;
+}
