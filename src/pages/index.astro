@@ -1,17 +1,81 @@
 ---
-
+import LandingPage from "../components/LandingPage";
+import "../styles/global.css";
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+    <head>
+        <meta charset="utf-8" />
+        <link rel="icon" type="image/png" href="/assets/playhead-icon.png" />
+        <link rel="apple-touch-icon" href="/assets/playhead-icon.png" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <meta
+            name="description"
+            content="Playhead is a minimal, local-first music player for your own music files. Browse by library or folders, view waveforms, and edit track metadata."
+        />
+        <meta property="og:type" content="website" />
+        <meta
+            property="og:title"
+            content="Playhead: A local music player with waveforms"
+        />
+        <meta
+            property="og:description"
+            content="A slick, open-source music player for people who still keep a real music library. Waveform playback, folder browsing, metadata editing, and no accounts."
+        />
+        <meta property="og:image" content="/assets/ogimage.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Playhead app interface" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+            name="twitter:title"
+            content="Playhead: A local music player with waveforms"
+        />
+        <meta
+            name="twitter:description"
+            content="A minimal, waveform-based music player for local music libraries."
+        />
+        <meta name="twitter:image" content="/assets/ogimage.png" />
+        <title>Playhead | Free Local-first Waveform Music Player</title>
+        <noscript>
+            <style>
+                .motion-preload {
+                    filter: none !important;
+                    opacity: 1 !important;
+                    transform: none !important;
+                }
+            </style>
+        </noscript>
+    </head>
+    <body
+        class="bg-[var(--website-ui-background)] text-[var(--website-text-primary)] antialiased"
+    >
+        <LandingPage client:load />
+    </body>
 </html>
+
+<style>
+    :global(:root) {
+        --website-ui-background: #ffffdb;
+        --website-ui-primary: #22221d;
+        --website-text-primary: #2d2d20;
+        --website-text-muted: #4b4b3d;
+        --website-text-primary-on-dark: #ffffea;
+    }
+
+    :global(html) {
+        font-family:
+            system-ui,
+            -apple-system,
+            BlinkMacSystemFont,
+            "Inter",
+            "Segoe UI",
+            sans-serif;
+        background: var(--website-ui-background);
+    }
+
+    :global(body) {
+        margin: 0;
+    }
+</style>
