@@ -34,7 +34,8 @@ export function Hero() {
       >
         <h1 className="text-[42px] font-bold leading-[0.9] tracking-[-0.04em] text-[var(--website-text-primary)] sm:text-6xl lg:text-[64px]">
           Beautiful, local, free
-          <br className="hidden sm:block" />
+          <br className="hidden sm:inline" />
+          <span className="inline sm:hidden">&nbsp;</span>
           waveform music player.
         </h1>
         <p className="mx-auto mt-6 max-w-[720px] text-base font-medium leading-[1.36] tracking-[-0.04em] text-[var(--website-text-muted)] sm:text-lg">
@@ -73,7 +74,7 @@ export function Hero() {
           src="/assets/playhead-hero-bg.png"
           alt=""
           aria-hidden="true"
-          className="absolute bottom-0 left-0 h-auto w-[114%] max-w-none"
+          className="absolute bottom-0 left-0 h-full w-full object-cover xl:h-auto xl:w-[114%] xl:object-none max-w-none"
         />
         <div className="absolute inset-0 bg-black/20" />
         <motion.div
