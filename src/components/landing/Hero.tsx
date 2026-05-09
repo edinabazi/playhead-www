@@ -9,22 +9,25 @@ export function Hero() {
 
   return (
     <section className="flex w-full max-w-[1728px] flex-col items-center px-5">
-      <motion.a
-        href="/"
-        aria-label="Playhead home"
-        className="motion-preload mb-10 block translate-y-[18px] opacity-0 sm:mb-16"
+      <motion.div
+        className="motion-preload mb-10 flex translate-y-[18px] items-center gap-3 opacity-0 sm:mb-16"
         initial={loadInitial}
         animate={revealAnimate}
         transition={{ ...transition, delay: 0.04 }}
       >
-        <img
-          src="/assets/playhead-logo.svg"
-          alt="Playhead"
-          width="210"
-          height="62"
-          className="h-[42px] w-auto sm:h-[62px]"
-        />
-      </motion.a>
+        <a href="/" aria-label="Playhead home" className="block relative">
+          <img
+            src="/assets/playhead-logo.svg"
+            alt="Playhead"
+            width="210"
+            height="62"
+            className="h-[42px] w-auto sm:h-[62px]"
+          />
+          <span className="absolute top-1/2 right-0 -translate-y-[7px] translate-x-[116%] rounded-full bg-(--website-ui-primary) text-(--website-text-primary-on-dark) px-1.5 py-1 text-[10px] font-black uppercase leading-none tracking-tight opacity-90">
+            Beta
+          </span>
+        </a>
+      </motion.div>
 
       <motion.div
         className="motion-preload mx-auto max-w-5xl translate-y-[18px] text-center opacity-0"
@@ -48,8 +51,8 @@ export function Hero() {
 
       <motion.div
         className="motion-preload relative z-30 mt-8 translate-y-[18px] opacity-0"
-        initial={loadInitial}
-        animate={revealAnimate}
+        initial={prefersReducedMotion ? false : { opacity: 0, y: 18 }}
+        animate={{ opacity: 1, y: 0 }}
         transition={{ ...transition, delay: 0.32 }}
       >
         <CtaButtons placement="hero" />

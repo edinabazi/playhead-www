@@ -1,11 +1,14 @@
 import { useEffect, useId, useRef, useState } from "react";
 import { AnimatePresence, motion, useReducedMotion } from "motion/react";
-import { ArrowRight, ChevronDown } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { links } from "../../content/site";
 import { ease } from "./motion";
 
 type Platform = "mac" | "windows" | "linux";
 type PreviewPlatform = Platform | "auto";
+
+const caretDownPath = "M6 9L12 15L18 9";
+const caretUpPath = "M6 15L12 9L18 15";
 
 const macDownloads = [
   {
@@ -160,19 +163,36 @@ export function CtaButtons({ placement }: CtaButtonsProps) {
             aria-expanded={isDownloadOpen}
             aria-controls={dropdownId}
             onClick={() => setIsDownloadOpen((open) => !open)}
-            className="group relative inline-flex h-16 cursor-pointer items-center justify-center overflow-hidden rounded-xl bg-[var(--website-ui-primary)] px-5 py-4 pl-15 text-xl font-semibold tracking-[-0.04em] text-[var(--website-text-primary-on-dark)] shadow-[0_18px_52px_rgba(34,34,29,0.22)] transition duration-300 ease-out hover:-translate-y-0.5 hover:opacity-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--website-ui-primary)]"
+            className="group relative inline-flex h-16 min-w-[244px] cursor-pointer items-center justify-center overflow-hidden rounded-xl bg-[var(--website-ui-primary)] px-5 py-4 pl-15 text-xl font-semibold tracking-[-0.04em] text-[var(--website-text-primary-on-dark)] shadow-[0_18px_52px_rgba(34,34,29,0.22)] transition duration-300 ease-out hover:-translate-y-0.5 hover:opacity-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--website-ui-primary)]"
           >
             {downloadButtonContent}
-            <ChevronDown
+            <motion.svg
               aria-hidden="true"
-              size={25}
-              strokeWidth={2.2}
-              className={`absolute right-5 translate-x-full scale-x-50 opacity-0 blur-sm transition duration-300 ease-out group-hover:translate-x-0 group-hover:scale-x-100 group-hover:opacity-100 group-hover:blur-none ${
+              width="25"
+              height="25"
+              viewBox="0 0 24 24"
+              fill="none"
+              className="pointer-events-none absolute right-5 translate-x-[180%] scale-x-50 opacity-0 blur-sm transition duration-300 ease-out group-hover:translate-x-0 group-hover:scale-x-100 group-hover:opacity-100 group-hover:blur-none"
+              style={
                 isDownloadOpen
-                  ? "translate-x-0 rotate-180 scale-x-100 opacity-100 blur-none"
-                  : "rotate-0"
-              }`}
-            />
+                  ? {
+                      transform: "translateX(0) scaleX(1)",
+                      opacity: 1,
+                      filter: "blur(0)",
+                    }
+                  : undefined
+              }
+            >
+              <motion.path
+                d={isDownloadOpen ? caretUpPath : caretDownPath}
+                animate={{ d: isDownloadOpen ? caretUpPath : caretDownPath }}
+                transition={{ duration: prefersReducedMotion ? 0 : 0.22, ease }}
+                stroke="currentColor"
+                strokeWidth="2.2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </motion.svg>
           </button>
         ) : (
           <a
@@ -198,17 +218,21 @@ export function CtaButtons({ placement }: CtaButtonsProps) {
             <motion.div
               id={dropdownId}
               role="menu"
-              className="absolute left-1/2 top-[76px] z-20 w-[min(92vw,330px)] -translate-x-1/2 overflow-hidden rounded-xl border border-[rgba(34,34,29,0.12)] bg-[rgba(255,255,234,0.94)] p-2 text-left shadow-[0_28px_80px_rgba(34,34,29,0.28)] backdrop-blur-xl"
+              className="absolute left-1/2 top-[76px] z-20 w-[min(92vw,330px)] -translate-x-1/2 overflow-hidden rounded-xl border border-[rgba(34,34,29,0.12)] bg-[rgba(255,255,234,0.72)] p-2 text-left shadow-[0_28px_80px_rgba(34,34,29,0.28)]"
+              style={{
+                backdropFilter: "blur(28px) saturate(1.5)",
+                WebkitBackdropFilter: "blur(28px) saturate(1.5)",
+              }}
               initial={
                 prefersReducedMotion
                   ? false
-                  : { opacity: 0, y: -10, scale: 0.96, filter: "blur(8px)" }
+                  : { opacity: 0, y: -10, scale: 0.96 }
               }
-              animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={
                 prefersReducedMotion
                   ? { opacity: 0 }
-                  : { opacity: 0, y: -8, scale: 0.98, filter: "blur(6px)" }
+                  : { opacity: 0, y: -8, scale: 0.98 }
               }
               transition={{ duration: prefersReducedMotion ? 0 : 0.34, ease }}
             >
