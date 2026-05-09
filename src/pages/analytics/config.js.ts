@@ -1,3 +1,5 @@
+import { env } from "cloudflare:workers";
+
 export const prerender = false;
 
 type RuntimeEnv = {
@@ -7,21 +9,21 @@ type RuntimeEnv = {
   PUBLIC_DATAFAST_DOMAIN?: string;
 };
 
-export function GET({ locals }: { locals: { runtime?: { env?: RuntimeEnv } } }) {
-  const env = locals.runtime?.env ?? {};
+export function GET() {
+  const runtimeEnv = env as RuntimeEnv;
   const config = {
     posthogToken:
-      env.PUBLIC_POSTHOG_TOKEN ?? import.meta.env.PUBLIC_POSTHOG_TOKEN ?? "",
+      runtimeEnv.PUBLIC_POSTHOG_TOKEN ?? import.meta.env.PUBLIC_POSTHOG_TOKEN ?? "",
     posthogApiHost:
-      env.PUBLIC_POSTHOG_API_HOST ??
+      runtimeEnv.PUBLIC_POSTHOG_API_HOST ??
       import.meta.env.PUBLIC_POSTHOG_API_HOST ??
       "https://eu.i.posthog.com",
     datafastWebsiteId:
-      env.PUBLIC_DATAFAST_WEBSITE_ID ??
+      runtimeEnv.PUBLIC_DATAFAST_WEBSITE_ID ??
       import.meta.env.PUBLIC_DATAFAST_WEBSITE_ID ??
       "",
     datafastDomain:
-      env.PUBLIC_DATAFAST_DOMAIN ??
+      runtimeEnv.PUBLIC_DATAFAST_DOMAIN ??
       import.meta.env.PUBLIC_DATAFAST_DOMAIN ??
       "playheadapp.com",
   };
