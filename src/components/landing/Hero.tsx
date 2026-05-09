@@ -47,7 +47,7 @@ export function Hero() {
       </motion.div>
 
       <motion.div
-        className="motion-preload mt-8 translate-y-[18px] opacity-0"
+        className="motion-preload relative z-30 mt-8 translate-y-[18px] opacity-0"
         initial={loadInitial}
         animate={revealAnimate}
         transition={{ ...transition, delay: 0.32 }}

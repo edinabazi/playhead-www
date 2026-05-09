@@ -13,8 +13,10 @@ import type { LucideIcon } from "lucide-react";
 export const siteUrl = "https://playheadapp.com";
 
 export const links = {
-  downloadMac:
+  downloadMacAppleSilicon:
     "https://github.com/edinabazi/playhead/releases/latest/download/Playhead-mac-arm64.dmg",
+  downloadMacIntel:
+    "https://github.com/edinabazi/playhead/releases/latest/download/Playhead-mac-x64.dmg",
   github: "https://github.com/edinabazi/playhead",
 } as const;
 
