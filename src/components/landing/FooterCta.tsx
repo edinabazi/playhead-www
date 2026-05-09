@@ -12,7 +12,7 @@ export function FooterCta() {
       {...inView}
       transition={{ duration: prefersReducedMotion ? 0 : 0.9, ease }}
     >
-      <CtaButtons />
+      <CtaButtons placement="footer" />
       <motion.img
         src="/assets/playhead-footer-wordmark.svg"
         alt="Playhead"

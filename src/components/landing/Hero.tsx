@@ -52,7 +52,7 @@ export function Hero() {
         animate={revealAnimate}
         transition={{ ...transition, delay: 0.32 }}
       >
-        <CtaButtons />
+        <CtaButtons placement="hero" />
       </motion.div>
 
       <motion.div

@@ -73,7 +73,11 @@ function detectPlatform(): Platform {
   return "mac";
 }
 
-export function CtaButtons() {
+type CtaButtonsProps = {
+  placement: "hero" | "footer";
+};
+
+export function CtaButtons({ placement }: CtaButtonsProps) {
   const [isDownloadOpen, setIsDownloadOpen] = useState(false);
   const [detectedPlatform, setDetectedPlatform] = useState<Platform>("mac");
   const [previewPlatform, setPreviewPlatform] =
@@ -175,6 +179,9 @@ export function CtaButtons() {
             href={activeDownload.href}
             target={activeDownload.target}
             rel={activeDownload.target === "_blank" ? "noopener noreferrer" : undefined}
+            data-analytics-event="download_button_clicked"
+            data-analytics-target={activePlatform}
+            data-analytics-placement={placement}
             className="group relative inline-flex h-16 cursor-pointer items-center justify-center overflow-hidden rounded-xl bg-[var(--website-ui-primary)] px-5 py-4 pl-15 text-xl font-semibold tracking-[-0.04em] text-[var(--website-text-primary-on-dark)] shadow-[0_18px_52px_rgba(34,34,29,0.22)] transition duration-300 ease-out hover:-translate-y-0.5 hover:opacity-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--website-ui-primary)]"
           >
             {downloadButtonContent}
@@ -212,6 +219,13 @@ export function CtaButtons() {
                   role="menuitem"
                   href={download.href}
                   onClick={() => setIsDownloadOpen(false)}
+                  data-analytics-event="download_button_clicked"
+                  data-analytics-target={
+                    download.href === links.downloadMacAppleSilicon
+                      ? "macos_silicon"
+                      : "macos_intel"
+                  }
+                  data-analytics-placement={placement}
                   className="group/item relative flex cursor-pointer items-center gap-3 overflow-hidden rounded-lg px-3 py-3 text-[var(--website-text-primary)] transition duration-150 ease-out hover:bg-[var(--website-ui-primary)] hover:text-[var(--website-text-primary-on-dark)] focus-visible:bg-[var(--website-ui-primary)] focus-visible:text-[var(--website-text-primary-on-dark)] focus-visible:outline-none"
                   initial={prefersReducedMotion ? false : { opacity: 0, y: 8 }}
                   animate={{ opacity: 1, y: 0 }}
@@ -271,6 +285,9 @@ export function CtaButtons() {
         href={links.github}
         target="_blank"
         rel="noopener noreferrer"
+        data-analytics-event="github_button_clicked"
+        data-analytics-target="github"
+        data-analytics-placement={placement}
         className="group relative inline-flex h-16 items-center justify-center overflow-hidden rounded-xl border-2 border-[var(--website-ui-primary)] px-5 py-4 pl-15 text-xl font-semibold tracking-[-0.04em] text-[var(--website-text-primary)] transition duration-300 ease-out hover:-translate-y-0.5 hover:bg-[rgba(34,34,29,0.06)]"
       >
         <div className="absolute left-5 translate-x-0 opacity-100 transition duration-300 ease-out group-hover:-translate-x-full group-hover:scale-x-50 group-hover:opacity-0 group-hover:blur-sm">
