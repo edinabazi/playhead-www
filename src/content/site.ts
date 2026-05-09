@@ -17,6 +17,9 @@ export const links = {
     "https://github.com/edinabazi/playhead/releases/latest/download/Playhead-mac-arm64.dmg",
   downloadMacIntel:
     "https://github.com/edinabazi/playhead/releases/latest/download/Playhead-mac-x64.dmg",
+  downloadWindows:
+    "https://github.com/edinabazi/playhead/releases/latest/download/Playhead-win-x64.exe",
+  downloadLinux: "https://github.com/edinabazi/playhead/releases/latest",
   github: "https://github.com/edinabazi/playhead",
 } as const;
 

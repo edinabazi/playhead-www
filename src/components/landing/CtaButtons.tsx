@@ -4,6 +4,9 @@ import { ArrowRight, ChevronDown } from "lucide-react";
 import { links } from "../../content/site";
 import { ease } from "./motion";
 
+type Platform = "mac" | "windows" | "linux";
+type PreviewPlatform = Platform | "auto";
+
 const macDownloads = [
   {
     label: "Apple Silicon",
@@ -14,18 +17,83 @@ const macDownloads = [
   },
   {
     label: "Intel Macs",
-    detail: "x64 processors",
+    detail: "Older Intel models",
     href: links.downloadMacIntel,
     logo: "/assets/intel-logo.svg",
     logoClassName: "h-7 w-auto",
   },
 ] as const;
 
+const platformDownloads: Record<
+  Platform,
+  {
+    label: string;
+    href: string;
+    logo: string;
+    logoClassName: string;
+    target?: "_blank";
+  }
+> = {
+  mac: {
+    label: "Download for Mac",
+    href: links.downloadMacAppleSilicon,
+    logo: "/assets/apple-logo.svg",
+    logoClassName: "h-[30px] w-5",
+  },
+  windows: {
+    label: "Download for Windows",
+    href: links.downloadWindows,
+    logo: "/assets/windows-logo.svg",
+    logoClassName: "size-[25px]",
+  },
+  linux: {
+    label: "Download for Linux",
+    href: links.downloadLinux,
+    logo: "/assets/linux-logo.svg",
+    logoClassName: "size-[29px]",
+    target: "_blank",
+  },
+};
+
+const previewPlatforms: PreviewPlatform[] = ["auto", "mac", "windows", "linux"];
+
+function detectPlatform(): Platform {
+  const platform =
+    (
+      navigator as Navigator & {
+        userAgentData?: { platform?: string };
+      }
+    ).userAgentData?.platform ||
+    navigator.platform ||
+    navigator.userAgent;
+  const normalizedPlatform = platform.toLowerCase();
+
+  if (normalizedPlatform.includes("win")) return "windows";
+  if (normalizedPlatform.includes("linux")) return "linux";
+  return "mac";
+}
+
 export function CtaButtons() {
   const [isDownloadOpen, setIsDownloadOpen] = useState(false);
+  const [detectedPlatform, setDetectedPlatform] = useState<Platform>("mac");
+  const [previewPlatform, setPreviewPlatform] =
+    useState<PreviewPlatform>("auto");
+  const [showPreviewToggle, setShowPreviewToggle] = useState(false);
   const dropdownId = useId();
   const downloadRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = useReducedMotion();
+  const activePlatform =
+    previewPlatform === "auto" ? detectedPlatform : previewPlatform;
+  const activeDownload = platformDownloads[activePlatform];
+  const isMacDownload = activePlatform === "mac";
+
+  useEffect(() => {
+    setDetectedPlatform(detectPlatform());
+    setShowPreviewToggle(
+      window.location.hostname === "localhost" ||
+        window.location.hostname === "127.0.0.1",
+    );
+  }, []);
 
   useEffect(() => {
     if (!isDownloadOpen) return;
@@ -54,43 +122,72 @@ export function CtaButtons() {
     };
   }, [isDownloadOpen]);
 
+  useEffect(() => {
+    if (!isMacDownload) {
+      setIsDownloadOpen(false);
+    }
+  }, [isMacDownload]);
+
+  const downloadButtonContent = (
+    <>
+      <div className="absolute left-5 translate-x-0 opacity-100 transition duration-300 ease-out group-hover:-translate-x-full group-hover:scale-x-50 group-hover:opacity-0 group-hover:blur-sm">
+        <img
+          src={activeDownload.logo}
+          alt=""
+          aria-hidden="true"
+          className={activeDownload.logoClassName}
+        />
+      </div>
+      <div className="translate-x-0 transition duration-300 ease-out group-hover:-translate-x-8">
+        {activeDownload.label}
+      </div>
+    </>
+  );
+
   return (
     <div className="flex flex-col items-center gap-4 sm:flex-row sm:items-start sm:gap-8">
       <div
         ref={downloadRef}
         className="relative flex flex-col items-center gap-2"
       >
-        <button
-          type="button"
-          aria-expanded={isDownloadOpen}
-          aria-controls={dropdownId}
-          onClick={() => setIsDownloadOpen((open) => !open)}
-          className="group relative inline-flex h-16 cursor-pointer items-center justify-center overflow-hidden rounded-xl bg-[var(--website-ui-primary)] px-5 py-4 pl-15 text-xl font-semibold tracking-[-0.04em] text-[var(--website-text-primary-on-dark)] shadow-[0_18px_52px_rgba(34,34,29,0.22)] transition duration-300 ease-out hover:-translate-y-0.5 hover:opacity-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--website-ui-primary)]"
-        >
-          <div className="absolute left-5 translate-x-0 opacity-100 transition duration-300 ease-out group-hover:-translate-x-full group-hover:scale-x-50 group-hover:opacity-0 group-hover:blur-sm">
-            <img
-              src="/assets/apple-logo.svg"
-              alt=""
+        {isMacDownload ? (
+          <button
+            type="button"
+            aria-expanded={isDownloadOpen}
+            aria-controls={dropdownId}
+            onClick={() => setIsDownloadOpen((open) => !open)}
+            className="group relative inline-flex h-16 cursor-pointer items-center justify-center overflow-hidden rounded-xl bg-[var(--website-ui-primary)] px-5 py-4 pl-15 text-xl font-semibold tracking-[-0.04em] text-[var(--website-text-primary-on-dark)] shadow-[0_18px_52px_rgba(34,34,29,0.22)] transition duration-300 ease-out hover:-translate-y-0.5 hover:opacity-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--website-ui-primary)]"
+          >
+            {downloadButtonContent}
+            <ChevronDown
               aria-hidden="true"
-              className="h-[30px] w-5"
+              size={25}
+              strokeWidth={2.2}
+              className={`absolute right-5 translate-x-full scale-x-50 opacity-0 blur-sm transition duration-300 ease-out group-hover:translate-x-0 group-hover:scale-x-100 group-hover:opacity-100 group-hover:blur-none ${
+                isDownloadOpen
+                  ? "translate-x-0 rotate-180 scale-x-100 opacity-100 blur-none"
+                  : "rotate-0"
+              }`}
             />
-          </div>
-          <div className="translate-x-0 transition duration-300 ease-out group-hover:-translate-x-8">
-            Download for Mac
-          </div>
-          <ChevronDown
-            aria-hidden="true"
-            size={25}
-            strokeWidth={2.2}
-            className={`absolute right-5 translate-x-full scale-x-50 opacity-0 blur-sm transition duration-300 ease-out group-hover:translate-x-0 group-hover:scale-x-100 group-hover:opacity-100 group-hover:blur-none ${
-              isDownloadOpen
-                ? "translate-x-0 rotate-180 scale-x-100 opacity-100 blur-none"
-                : "rotate-0"
-            }`}
-          />
-        </button>
+          </button>
+        ) : (
+          <a
+            href={activeDownload.href}
+            target={activeDownload.target}
+            rel={activeDownload.target === "_blank" ? "noopener noreferrer" : undefined}
+            className="group relative inline-flex h-16 cursor-pointer items-center justify-center overflow-hidden rounded-xl bg-[var(--website-ui-primary)] px-5 py-4 pl-15 text-xl font-semibold tracking-[-0.04em] text-[var(--website-text-primary-on-dark)] shadow-[0_18px_52px_rgba(34,34,29,0.22)] transition duration-300 ease-out hover:-translate-y-0.5 hover:opacity-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--website-ui-primary)]"
+          >
+            {downloadButtonContent}
+            <ArrowRight
+              aria-hidden="true"
+              size={24}
+              strokeWidth={2}
+              className="absolute right-5 translate-x-full scale-x-50 opacity-0 blur-sm transition duration-300 ease-out group-hover:translate-x-0 group-hover:scale-x-100 group-hover:opacity-100 group-hover:blur-none"
+            />
+          </a>
+        )}
         <AnimatePresence>
-          {isDownloadOpen && (
+          {isMacDownload && isDownloadOpen && (
             <motion.div
               id={dropdownId}
               role="menu"
@@ -151,13 +248,24 @@ export function CtaButtons() {
             </motion.div>
           )}
         </AnimatePresence>
-        <span
-          className={`text-xs font-medium tracking-[-0.03em] text-[var(--website-text-muted)] transition duration-200 ease-out ${
-            isDownloadOpen ? "opacity-0" : "opacity-100"
-          }`}
-        >
-          Windows &amp; Linux soon
-        </span>
+        {showPreviewToggle && (
+          <div className="flex rounded-lg border border-[rgba(34,34,29,0.16)] p-1">
+            {previewPlatforms.map((platform) => (
+              <button
+                key={platform}
+                type="button"
+                onClick={() => setPreviewPlatform(platform)}
+                className={`cursor-pointer rounded-md px-2.5 py-1 text-[11px] font-bold capitalize tracking-[-0.03em] transition duration-200 ease-out ${
+                  previewPlatform === platform
+                    ? "bg-[var(--website-ui-primary)] text-[var(--website-text-primary-on-dark)]"
+                    : "text-[var(--website-text-muted)] hover:bg-[rgba(34,34,29,0.08)]"
+                }`}
+              >
+                {platform}
+              </button>
+            ))}
+          </div>
+        )}
       </div>
       <a
         href={links.github}
