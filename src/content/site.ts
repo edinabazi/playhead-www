@@ -14,7 +14,7 @@ export const siteUrl = "https://playheadapp.com";
 
 export const links = {
   downloadMac:
-    "https://github.com/edinabazi/playhead/releases/latest/download/playhead-macos.zip",
+    "https://github.com/edinabazi/playhead/releases/latest/download/Playhead-mac-arm64.dmg",
   github: "https://github.com/edinabazi/playhead",
 } as const;
 
