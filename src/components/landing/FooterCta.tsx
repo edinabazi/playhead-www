@@ -7,7 +7,7 @@ export function FooterCta() {
 
   return (
     <motion.section
-      className="motion-preload flex w-full translate-y-6 flex-col items-center px-5 pb-12 pt-16 opacity-0 sm:pb-0 sm:pt-[92px]"
+      className="motion-preload flex w-full translate-y-6 flex-col items-center px-5 pb-0 pt-16 opacity-0 sm:pt-[92px]"
       initial={prefersReducedMotion ? false : { opacity: 0, y: 24 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.22 }}
@@ -32,7 +32,7 @@ export function FooterCta() {
             delay: 0.16,
           }}
         />
-        <p className="absolute bottom-5 left-1/2 w-full -translate-x-1/2 text-center text-sm font-semibold tracking-tighter text-[var(--website-text-muted)] sm:bottom-8 sm:text-base">
+        <p className="absolute bottom-7 left-1/2 w-full -translate-x-1/2 text-center text-sm font-semibold tracking-tighter text-[var(--website-text-muted)] sm:bottom-8 sm:text-base">
           Designed and built with ❤️ by{" "}
           <a
             href="https://edinabazi.com"

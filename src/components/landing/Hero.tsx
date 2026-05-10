@@ -10,7 +10,7 @@ export function Hero() {
   return (
     <section className="flex w-full max-w-[1728px] flex-col items-center px-5">
       <motion.div
-        className="motion-preload mb-10 flex translate-y-[18px] items-center gap-3 opacity-0 sm:mb-16"
+        className="motion-preload mb-6 sm:mb-10 flex translate-y-[18px] items-center gap-3 opacity-0 sm:mb-16"
         initial={loadInitial}
         animate={revealAnimate}
         transition={{ ...transition, delay: 0.04 }}
@@ -21,9 +21,9 @@ export function Hero() {
             alt="Playhead"
             width="210"
             height="62"
-            className="h-[42px] w-auto sm:h-[62px]"
+            className="h-9 w-auto sm:h-[62px]"
           />
-          <span className="absolute top-1/2 right-0 -translate-y-[7px] translate-x-[116%] rounded-full bg-(--website-ui-primary) text-(--website-text-primary-on-dark) px-1.5 py-1 text-[10px] font-black uppercase leading-none tracking-tight opacity-90">
+          <span className="absolute top-1/2 right-0 -translate-y-[7px] translate-x-[116%] rounded-full bg-(--website-ui-primary) text-(--website-text-primary-on-dark) px-1.5 py-1 text-[7px] sm:text-[10px] font-black uppercase leading-none tracking-tight opacity-90">
             Beta
           </span>
         </a>
@@ -35,13 +35,13 @@ export function Hero() {
         animate={revealAnimate}
         transition={{ ...transition, delay: 0.18 }}
       >
-        <h1 className="text-[42px] font-bold leading-[0.9] tracking-[-0.04em] text-[var(--website-text-primary)] sm:text-6xl lg:text-[64px]">
+        <h1 className="text-[10.5vw] font-bold leading-[0.9] tracking-[-0.04em] text-[var(--website-text-primary)] sm:text-6xl lg:text-[64px]">
           Beautiful, local, free
           <br className="hidden sm:inline" />
           <span className="inline sm:hidden">&nbsp;</span>
           waveform music player.
         </h1>
-        <p className="mx-auto mt-6 max-w-[720px] text-base font-medium leading-[1.36] tracking-[-0.04em] text-[var(--website-text-muted)] sm:text-lg">
+        <p className="mx-auto mt-6 max-w-[720px] text-sm font-medium leading-[1.36] tracking-[-0.04em] text-[var(--website-text-muted)] sm:text-lg">
           Playhead gives your local music collection a clean, fast,
           waveform-first interface. <br className="hidden md:inline" />
           Browse by folders or library, inspect metadata, and move through
@@ -50,7 +50,7 @@ export function Hero() {
       </motion.div>
 
       <motion.div
-        className="motion-preload relative z-30 mt-8 translate-y-[18px] opacity-0"
+        className="motion-preload relative z-30 mt-8 translate-y-[18px] opacity-0 max-[529px]:w-full"
         initial={prefersReducedMotion ? false : { opacity: 0, y: 18 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ ...transition, delay: 0.32 }}
@@ -59,7 +59,7 @@ export function Hero() {
       </motion.div>
 
       <motion.div
-        className="motion-preload relative mt-10 h-[360px] w-full max-w-[1280px] translate-y-9 overflow-hidden rounded-[40px] bg-[var(--website-text-primary-on-dark)] opacity-0 sm:mt-14 sm:h-[520px] sm:rounded-[64px] lg:h-[717px] lg:rounded-[68px]"
+        className="motion-preload relative mt-4 sm:mt-10 h-[220px] w-full max-w-[1280px] translate-y-9 overflow-hidden rounded-[40px] bg-[var(--website-text-primary-on-dark)] opacity-0 sm:mt-14 sm:h-[520px] sm:rounded-[64px] lg:h-[717px] lg:rounded-[68px]"
         style={{ cornerShape: "squircle" }}
         initial={
           prefersReducedMotion
