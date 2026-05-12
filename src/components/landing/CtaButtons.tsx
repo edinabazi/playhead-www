@@ -161,7 +161,7 @@ export function CtaButtons({ placement }: CtaButtonsProps) {
             aria-expanded={isDownloadOpen}
             aria-controls={dropdownId}
             onClick={() => setIsDownloadOpen((open) => !open)}
-            className="group relative inline-flex h-16 min-w-[244px] cursor-pointer items-center justify-center overflow-hidden rounded-xl bg-[var(--website-ui-primary)] px-5 py-4 text-xl font-semibold tracking-[-0.04em] text-[var(--website-text-primary-on-dark)] shadow-[0_18px_52px_rgba(34,34,29,0.22)] transition duration-300 ease-out hover:-translate-y-0.5 hover:opacity-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--website-ui-primary)] max-[529px]:w-full"
+            className="group relative inline-flex h-16 min-w-[244px] cursor-pointer items-center justify-center overflow-hidden rounded-xl bg-[var(--website-ui-primary)] px-5 py-4 text-xl font-semibold tracking-[-0.04em] text-[var(--website-text-primary-on-dark)] shadow-[0_18px_52px_rgba(34,34,29,0.22)] transition duration-300 ease-out hover:opacity-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--website-ui-primary)] max-[529px]:w-full"
           >
             {downloadButtonContent}
             <motion.svg
@@ -204,7 +204,7 @@ export function CtaButtons({ placement }: CtaButtonsProps) {
             data-analytics-event="download_button_clicked"
             data-analytics-target={activePlatform}
             data-analytics-placement={placement}
-            className="group relative inline-flex h-16 cursor-pointer items-center justify-center overflow-hidden rounded-xl bg-[var(--website-ui-primary)] px-5 py-4 text-xl font-semibold tracking-[-0.04em] text-[var(--website-text-primary-on-dark)] shadow-[0_18px_52px_rgba(34,34,29,0.22)] transition duration-300 ease-out hover:-translate-y-0.5 hover:opacity-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--website-ui-primary)] max-[529px]:w-full"
+            className="group relative inline-flex h-16 cursor-pointer items-center justify-center overflow-hidden rounded-xl bg-[var(--website-ui-primary)] px-5 py-4 text-xl font-semibold tracking-[-0.04em] text-[var(--website-text-primary-on-dark)] shadow-[0_18px_52px_rgba(34,34,29,0.22)] transition duration-300 ease-out hover:opacity-95 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-[var(--website-ui-primary)] max-[529px]:w-full"
           >
             {downloadButtonContent}
             <ArrowRight
@@ -331,7 +331,7 @@ export function CtaButtons({ placement }: CtaButtonsProps) {
         data-analytics-event="github_button_clicked"
         data-analytics-target="github"
         data-analytics-placement={placement}
-        className="group relative inline-flex h-16 items-center justify-center overflow-hidden rounded-xl border-2 border-[var(--website-ui-primary)] px-5 py-4 pl-15 text-base font-semibold tracking-[-0.04em] text-[var(--website-text-primary)] transition duration-300 ease-out hover:-translate-y-0.5 hover:bg-[rgba(34,34,29,0.06)] max-[529px]:hidden sm:text-xl"
+        className="group relative inline-flex h-16 items-center justify-center overflow-hidden rounded-xl border-2 border-[var(--website-ui-primary)] px-5 py-4 pl-15 text-base font-semibold tracking-[-0.04em] text-[var(--website-text-primary)] transition duration-300 ease-out hover:bg-[rgba(34,34,29,0.06)] max-[529px]:hidden sm:text-xl"
       >
         <div className="absolute left-5 translate-x-0 opacity-100 transition duration-300 ease-out group-hover:-translate-x-full group-hover:scale-x-50 group-hover:opacity-0 group-hover:blur-sm">
           <img
