@@ -1,11 +1,15 @@
 import {
+  Activity,
   AudioLines,
   CodeXml,
   FilePen,
   FolderSearch,
   GlobeX,
   Keyboard,
+  ListMusic,
+  MonitorSmartphone,
   Paintbrush,
+  Tags,
   UserLock,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
@@ -47,7 +51,8 @@ export const seo = {
 
 export type Feature = {
   title: readonly [string, string];
-  Icon: LucideIcon;
+  Icon?: LucideIcon;
+  iconSrc?: string;
 };
 
 export const features: Feature[] = [
@@ -68,12 +73,28 @@ export const features: Feature[] = [
     Icon: FolderSearch,
   },
   {
+    title: ["Last.fm", "integration"],
+    iconSrc: "/icons/lastdotfm.svg",
+  },
+  {
+    title: ["Playlist & tag", "organization"],
+    Icon: ListMusic,
+  },
+  {
     title: ["Metadata", "editing"],
     Icon: FilePen,
   },
   {
+    title: ["BPM", "analysis"],
+    Icon: Activity,
+  },
+  {
     title: ["Keyboard", "shortcuts"],
     Icon: Keyboard,
+  },
+  {
+    title: ["Multi-platform", "support"],
+    Icon: MonitorSmartphone,
   },
   {
     title: ["No accounts,", "no ads"],

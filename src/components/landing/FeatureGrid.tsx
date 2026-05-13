@@ -17,7 +17,7 @@ export function FeatureGrid() {
       {...inView}
       transition={{ duration: prefersReducedMotion ? 0 : 0.9, ease }}
     >
-      {features.map(({ title, Icon }, index) => (
+      {features.map(({ title, Icon, iconSrc }, index) => (
         <motion.div
           key={title.join(" ")}
           className="motion-preload flex h-full translate-y-[18px] flex-col items-center justify-center gap-4 text-center opacity-0"
@@ -30,12 +30,18 @@ export function FeatureGrid() {
             delay: Math.min(index * 0.065, 0.34),
           }}
         >
-          <Icon
-            aria-hidden="true"
-            size={48}
-            strokeWidth={2.25}
-            className="size-12 text-black"
-          />
+          {iconSrc ? (
+            <img src={iconSrc} alt="" aria-hidden="true" className="size-12" />
+          ) : (
+            Icon && (
+              <Icon
+                aria-hidden="true"
+                size={48}
+                strokeWidth={2.25}
+                className="size-12 text-black"
+              />
+            )
+          )}
           <h2 className="text-2xl font-bold leading-[0.96] tracking-[-0.035em] text-black sm:text-[28px]">
             {title[0]}
             <br />
