@@ -10,7 +10,6 @@ import {
   MonitorSmartphone,
   Paintbrush,
   Tags,
-  UserLock,
 } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 
@@ -73,10 +72,6 @@ export const features: Feature[] = [
     Icon: FolderSearch,
   },
   {
-    title: ["Last.fm", "integration"],
-    iconSrc: "/icons/lastdotfm.svg",
-  },
-  {
     title: ["Playlist & tag", "organization"],
     Icon: ListMusic,
   },
@@ -93,12 +88,16 @@ export const features: Feature[] = [
     Icon: Keyboard,
   },
   {
-    title: ["Multi-platform", "support"],
-    Icon: MonitorSmartphone,
+    title: ["Last.fm", "integration"],
+    iconSrc: "/icons/lastdotfm.svg",
   },
   {
-    title: ["No accounts,", "no ads"],
-    Icon: UserLock,
+    title: ["SoundCloud", "integration"],
+    iconSrc: "/icons/soundcloud.svg",
+  },
+  {
+    title: ["Multi-platform", "support"],
+    Icon: MonitorSmartphone,
   },
   {
     title: ["Free and", "open source"],
