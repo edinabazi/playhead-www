@@ -7,6 +7,7 @@
       "dependencies": {
         "@astrojs/cloudflare": "^13.5.0",
         "@astrojs/react": "^5.0.4",
+        "@datafast/ai-crawl": "^1.0.5",
         "@tailwindcss/vite": "^4.2.4",
         "astro": "^6.3.1",
         "lucide-react": "^1.14.0",
@@ -101,6 +102,8 @@
     "@cloudflare/workerd-windows-64": ["@cloudflare/workerd-windows-64@1.20260507.1", "", { "os": "win32", "cpu": "x64" }, "sha512-dmClJ/E0BAcuDetQIZFqbeAXejWrG5pysGRMQ6T83Y0IW/7IAamY2zFEkAJ10I5xwZsdHuYsZtzlOxpEXpJs7A=="],
 
     "@cspotcode/source-map-support": ["@cspotcode/source-map-support@0.8.1", "", { "dependencies": { "@jridgewell/trace-mapping": "0.3.9" } }, "sha512-IchNf6dN4tHoMFIn/7OE8LWZ19Y6q/67Bmf6vnGREv8RSbBVb9LPJxEcnwrcwX6ixSvaiGoomAUvu4YSxXrVgw=="],
+
+    "@datafast/ai-crawl": ["@datafast/ai-crawl@1.0.5", "", {}, "sha512-y0rieHoij585C8raLYJ4eB8DBzj36nBCT3o28BBbbTy8kEjA3JzwmndKbh4mZlyjY4IKSKBzR3RLfWSZT+Gdew=="],
 
     "@emnapi/runtime": ["@emnapi/runtime@1.10.0", "", { "dependencies": { "tslib": "^2.4.0" } }, "sha512-ewvYlk86xUoGI0zQRNq/mC+16R1QeDlKQy21Ki3oSYXNgLb45GV1P6A0M+/s6nyCuNDqe5VpaY84BzXGwVbwFA=="],
 
