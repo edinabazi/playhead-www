@@ -45,7 +45,7 @@ export function SoundCloudSection() {
           {soundcloudFeatures.map((feature, index) => (
             <motion.li
               key={feature.title}
-              className="motion-preload translate-y-[14px] border-t border-[rgba(255,255,234,0.24)] pt-5 opacity-0"
+              className="motion-preload translate-y-[14px] opacity-0"
               initial={prefersReducedMotion ? false : softRevealInitial}
               whileInView={revealAnimate}
               viewport={{ once: true, amount: 0.3 }}
@@ -64,7 +64,7 @@ export function SoundCloudSection() {
             </motion.li>
           ))}
         </ul>
-        <p className="mt-12 text-center text-sm font-medium tracking-[-0.02em] text-[rgba(255,255,234,0.5)]">
+        <p className="mt-16 text-center text-sm sm:mt-24 font-medium tracking-[-0.02em] text-[rgba(255,255,234,0.5)]">
           Optional. Connect it in Settings → Integrations. Streams tracks
           SoundCloud makes available for playback.
         </p>

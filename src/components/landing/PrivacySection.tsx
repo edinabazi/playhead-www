@@ -28,7 +28,7 @@ export function PrivacySection() {
         {privacyPoints.map((point, index) => (
           <motion.li
             key={point.title}
-            className="motion-preload translate-y-[14px] border-t-2 border-[var(--website-ui-primary)] pt-5 opacity-0"
+            className="motion-preload translate-y-[14px] opacity-0"
             initial={prefersReducedMotion ? false : softRevealInitial}
             whileInView={revealAnimate}
             viewport={{ once: true, amount: 0.3 }}
