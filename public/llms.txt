@@ -1,0 +1,49 @@
+# Playhead
+
+> Playhead is a free, open-source (MIT) waveform music player for local music libraries on macOS, Windows and Linux. It plays your own files with no account, no ads and no cloud library, and can optionally connect to SoundCloud and Last.fm.
+
+Playhead is in beta and under active development, with frequent releases. It is made by Edin Abazi.
+
+## What it does
+
+- Waveform playback: every track shows its waveform; click or drag to seek.
+- Loops and markers: Shift+drag on the waveform to loop a section; press M to drop named markers.
+- BPM and key detection: estimates BPM and detects musical key, shown in Camelot notation (e.g. 8A), as sortable columns.
+- Smart playlists: rule-based playlists (genre, artist, BPM range, year, length, tags, loved, file date) that update automatically.
+- Two ways to browse: folder mode (your folder structure, including subfolders) or library mode (tracks, artists, albums).
+- Playlists, tags and loved tracks; Play Next and Play Later queueing.
+- Playlist import from M3U/M3U8, rekordbox XML, Traktor NML and Serato crates; export to M3U/M3U8, rekordbox XML and Traktor NML.
+- Metadata editing: title, artist, album, album artist, genre, year, track and disc number, composer, BPM, comment and artwork.
+- Lyrics: embedded or .lrc lyrics, with timed lines that follow playback. Lyrics are never fetched online.
+- Sound: 10-band equalizer with presets, volume normalization (uses ReplayGain tags when present), volume boost to 200% with a limiter, playback speed 0.5×–2× with optional pitch preservation, sleep timer.
+- Duplicate finder for tracks that appear more than once.
+- Keyboard shortcuts and media keys; automatic background updates.
+
+## Supported formats
+
+MP3, FLAC, WAV, AIFF, M4A, AAC, OGG and Opus.
+
+## Integrations (optional)
+
+- SoundCloud: stream your likes, playlists, uploads, reposts and following feed; search SoundCloud; see and post timed comments on the waveform; edit your SoundCloud playlists; optionally sync likes and keep playing similar tracks.
+- Last.fm: scrobble plays and optionally sync loved tracks.
+
+## Privacy
+
+No account and no ads. Your music files stay on your computer and are not uploaded. Anonymous usage analytics are optional and can be turned off in Settings. Last.fm and SoundCloud only receive data if you connect them.
+
+## Download
+
+- [macOS, Apple Silicon (.dmg)](https://github.com/edinabazi/playhead/releases/latest/download/Playhead-mac-arm64.dmg)
+- [macOS, Intel (.dmg)](https://github.com/edinabazi/playhead/releases/latest/download/Playhead-mac-x64.dmg)
+- [Windows (.exe)](https://github.com/edinabazi/playhead/releases/latest/download/Playhead-win-x64.exe)
+- [Linux (AppImage and .deb)](https://github.com/edinabazi/playhead/releases/latest)
+
+macOS builds are signed and notarized. Windows and Linux builds are not signed yet.
+
+## Links
+
+- [Website](https://playheadapp.com/)
+- [Source code on GitHub](https://github.com/edinabazi/playhead)
+- [Releases and changelog](https://github.com/edinabazi/playhead/releases)
+- [Report an issue or request a feature](https://github.com/edinabazi/playhead/issues)

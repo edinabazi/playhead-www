@@ -16,7 +16,11 @@ export function FeatureGrid() {
       className="motion-preload grid w-full max-w-240 translate-y-6 grid-cols-2 auto-rows-[152px] gap-x-4 gap-y-10 px-5 pt-16 pb-28 opacity-0 sm:grid-cols-4 sm:auto-rows-[168px] sm:gap-y-12 sm:pt-24 sm:pb-40"
       {...inView}
       transition={{ duration: prefersReducedMotion ? 0 : 0.9, ease }}
+      aria-labelledby="features-heading"
     >
+      <h2 id="features-heading" className="sr-only">
+        Features
+      </h2>
       {features.map(({ title, Icon, iconSrc }, index) => (
         <motion.div
           key={title.join(" ")}
@@ -42,11 +46,11 @@ export function FeatureGrid() {
               />
             )
           )}
-          <h2 className="text-2xl font-bold leading-[0.96] tracking-[-0.035em] text-black sm:text-[28px]">
+          <h3 className="text-2xl font-bold leading-[0.96] tracking-[-0.035em] text-black sm:text-[28px]">
             {title[0]}
             <br />
             {title[1]}
-          </h2>
+          </h3>
         </motion.div>
       ))}
     </motion.section>

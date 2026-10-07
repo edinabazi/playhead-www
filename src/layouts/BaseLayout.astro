@@ -1,5 +1,5 @@
 ---
-import { faqJsonLd, pageSeo } from "../lib/seo";
+import { faqJsonLd, pageSeo, softwareJsonLd } from "../lib/seo";
 import "../styles/global.css";
 ---
 
@@ -8,11 +8,21 @@ import "../styles/global.css";
     <meta charset="utf-8" />
     <link rel="icon" type="image/png" href="/assets/playhead-icon.png" />
     <link rel="apple-touch-icon" href="/assets/playhead-icon.png" />
-    <meta name="viewport" content="width=device-width" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#ffffdb" />
+    <meta name="author" content="Edin Abazi" />
+    <meta
+      name="robots"
+      content="index, follow, max-image-preview:large, max-snippet:-1"
+    />
+    <link rel="sitemap" href="/sitemap.xml" />
+    <link rel="alternate" type="text/plain" href="/llms.txt" title="LLM summary" />
     <meta name="generator" content={Astro.generator} />
     <meta name="description" content={pageSeo.description} />
     <link rel="canonical" href={pageSeo.canonicalUrl} />
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Playhead" />
+    <meta property="og:locale" content="en_US" />
     <meta property="og:url" content={pageSeo.canonicalUrl} />
     <meta property="og:title" content={pageSeo.openGraph.title} />
     <meta property="og:description" content={pageSeo.openGraph.description} />
@@ -133,6 +143,10 @@ import "../styles/global.css";
       });
 
     </script>
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(softwareJsonLd())}
+    />
     <script type="application/ld+json" set:html={JSON.stringify(faqJsonLd())} />
     <noscript>
       <style>

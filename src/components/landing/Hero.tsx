@@ -44,8 +44,8 @@ export function Hero() {
         <p className="mx-auto mt-6 max-w-[720px] text-sm font-medium leading-[1.36] tracking-[-0.04em] text-[var(--website-text-muted)] sm:text-lg">
           Playhead gives your local music collection a clean, fast,
           waveform-first interface. <br className="hidden md:inline" />
-          Browse by folders or library, inspect metadata, and move through
-          tracks smoothly.
+          Loop sections, drop markers, detect BPM and key, and build smart
+          playlists. Free on Mac, Windows and Linux.
         </p>
       </motion.div>
 
